@@ -45,6 +45,25 @@ namespace Ymmy.WebApi.Controllers
             _contex.SaveChanges();
             return Ok();
         }
+        [HttpGet("GetFeature")]
+        public IActionResult GetFeature(int id)
+        {
+            var value = _contex.Features.Find(id);
+            if (value == null)
+            {
+                return NotFound();
+            }
+            return Ok(_mapper.Map<GetByIdFeatureDtos>(value));
+        }
+        [HttpPut]
+        public IActionResult UpdateFeature(UpdateFeatureDtos updateFeatureDtos)
+        {
+            var value = _mapper.Map<Feature>(updateFeatureDtos);
+            _contex.Features.Update(value);
+            _contex.SaveChanges();
+            return Ok("Güncleme Tamamlandı ");
+
+        }
 
     }
 }
