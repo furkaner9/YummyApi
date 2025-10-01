@@ -3,6 +3,7 @@ using AutoMapper.Features;
 using System.Runtime;
 using Ymmy.WebApi.Dtos.FeatureDtos;
 using Ymmy.WebApi.Dtos.MessageDtos;
+using Ymmy.WebApi.Dtos.ProductDtos;
 using Ymmy.WebApi.Entities;
 
 namespace Ymmy.WebApi.Mapping
@@ -23,8 +24,8 @@ namespace Ymmy.WebApi.Mapping
             CreateMap<Message,GetByIdMessageDtos>().ReverseMap();
             CreateMap<Message,ResultMessageDtos>().ReverseMap();
 
-
-
+            
+            CreateMap<Product,CreateProductDto>().ReverseMap();
         }
     }
 }
