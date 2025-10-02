@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Ymmy.WebApi.Context;
 using Ymmy.WebApi.Dtos.ProductDtos;
 using Ymmy.WebApi.Entities;
@@ -84,6 +85,12 @@ namespace Ymmy.WebApi.Controllers
             return Ok("Kategori ile Ürün Ekleme Başarılı");
 
 
+        }
+        [HttpGet("ProductWithCategory")]
+        public IActionResult ProductWithCategory()
+        {
+            var value = _context.Products.Include(x=>x.Category).ToList();
+            return Ok(_mapper.Map<List<ResultProductWithCategoryDto>>(value));
         }
 
 
